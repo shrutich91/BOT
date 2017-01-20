@@ -27,7 +27,7 @@ server.post('/api/messages', connector.listen());
 
 bot.dialog('/', function (session) {
     	var app1 = apiai("43a3623db4f54a8db91c25e2023805cc");
-    	var request = app1.textRequest(msg, {
+    	var request = app1.textRequest(session.message.text, {
           sessionId: "c8be547d-c34d-4135-cbc7-9d299c615454"
       });
       
