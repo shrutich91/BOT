@@ -1,10 +1,7 @@
 // Add your requirements
 var restify = require('restify'); 
 var builder = require('botbuilder'); 
-
-var apiai = require('apiai');
-
-
+var app1=require('apiai');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -20,13 +17,9 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // Create bot dialogs
-// bot.dialog('/', function (session) {
-
-//     session.send("Hello World");
-// });
-
 bot.dialog('/', function (session) {
-    	var app1 = apiai("43a3623db4f54a8db91c25e2023805cc");
+
+   var app1 = apiai("43a3623db4f54a8db91c25e2023805cc");
     	var request = app1.textRequest(session.message.text, {
           sessionId: "c8be547d-c34d-4135-cbc7-9d299c615454"
       });
@@ -42,8 +35,4 @@ bot.dialog('/', function (session) {
           console.log(error);
       });
       request.end();
-        
-    })
-    .onDefault(function (session) {
-        session.send("I didn't understand. Say hello to me!");
-    }));
+});
