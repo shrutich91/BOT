@@ -1,7 +1,7 @@
 // Add your requirements
 var restify = require('restify'); 
 var builder = require('botbuilder'); 
-var app1=require('apiai');
+var apiai=require('apiai');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -23,10 +23,10 @@ bot.dialog('/', function (session) {
     	var request = app1.textRequest(session.message.text, {
           sessionId: "c8be547d-c34d-4135-cbc7-9d299c615454"
       });
-      
+     
        
       request.on('response', function(response) {
-        console.log(response.result.fulfillment.speech)
+        console.log(response.result.fulfillment.speech);
          session.send(response.result.fulfillment.speech);
 
       });
